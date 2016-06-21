@@ -1,0 +1,28 @@
+{
+  "name": "webpack-d3-show",
+  "version": "1.0.0",
+  "description": "webpack d3 practice demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "d3",
+    "demo"
+  ],
+  "author": "dane.ding <270422767@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "clean-webpack-plugin": "^0.1.9",
+    "html-webpack-plugin": "^2.21.0",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "d3": "^4.0.0-alpha.50"
+  }
+}
