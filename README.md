@@ -18,3 +18,6 @@ or
 2. execute command **`npm install`** at the project root dir
 2. execute command **`webpack-dev-server --progress --colors`**
 3. open **`http://localhost:8080`** in browser
+
+## screenshot
+![zvrtlmyg21](https://cloud.githubusercontent.com/assets/7593506/16261362/d19fe2b6-389d-11e6-8fd7-ce75ccd87f19.gif)
