@@ -27,6 +27,8 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "d3": "^4.0.0-alpha.50"
+    "bootstrap": "^3.3.6",
+    "d3": "^4.0.0-alpha.50",
+    "normalize.css": "^4.1.1"
   }
 }
