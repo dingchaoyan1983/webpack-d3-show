@@ -1,68 +1,63 @@
 import * as d3 from 'd3';
 require('./index.css');
 
-let width = '100%';
-let height = 500;
-let data = d3.range(10).map(function() {
-  return generateRandom();
-});
-let rectWidth = 30;
-let margin = 10;
-let svg = d3.select('body').append('svg').attr('width', width).attr('height', height);
-let timeoutRef;
-let output = d3.select('#data');
+const width = '100%';
+const height = 500;
 
 function generateRandom() {
   return Math.floor(Math.random() * height);
 }
 
+const data = d3.range(10).map(() => generateRandom());
+const rectWidth = 30;
+const margin = 10;
+const svg = d3.select('body').append('svg')
+              .attr('width', width)
+              .attr('height', height);
+let timeoutRef;
+const output = d3.select('#data');
+
 function drawRect() {
-  let elements = svg.selectAll('.rect')
+  const elements = svg.selectAll('.rect')
     .data(data);
-  let enter = elements.enter();
-  let exit = elements.exit();
-  //update
+  const enter = elements.enter();
+  const exit = elements.exit();
+  // update
   elements
     .transition()
-    .attr('height', function(d) {
-      return d
-    });
-  //enter
+    .attr('height', (d) => d);
+  // enter
   enter.append('rect')
     .attr('class', 'rect')
-    .attr('x', function(d, i) {
-      return (rectWidth + margin) * i
-    })
+    .attr('x', (d, i) => (rectWidth + margin) * i)
     .attr('width', rectWidth)
     .attr('height', 0)
     .transition()
-    .attr('height', function(d) {
-      return d;
-    });
-  //exit
+    .attr('height', (d) => d);
+  // exit
   exit.remove();
 }
 
 function outputData() {
-  output.text(data.join(' , '))
+  output.text(data.join(' , '));
 }
 
-let reDrawRect = drawRect;
+const reDrawRect = drawRect;
 
 outputData();
 drawRect();
 
-d3.select('#push').on('click', function() {
+d3.select('#push').on('click', () => {
   data.push(generateRandom());
   outputData();
   reDrawRect();
 });
-d3.select('#shift').on('click', function() {
+d3.select('#shift').on('click', () => {
   data.shift();
   outputData();
   reDrawRect();
 });
-d3.select('#splice').on('click', function() {
+d3.select('#splice').on('click', () => {
   data.splice(1, 1, generateRandom());
   outputData();
   reDrawRect();
@@ -81,26 +76,26 @@ function draw() {
 
 draw();
 
-d3.select('#auto').on('click', function() {
+d3.select('#auto').on('click', () => {
   if (!run) {
     draw();
   }
 });
 
-d3.select('#stop').on('click', function() {
+d3.select('#stop').on('click', (...rest) => {
   console.log(this);
-  console.log(arguments);
-  console.log(d3.event)
+  console.log(rest);
+  console.log(d3.event);
   if (!!timeoutRef) {
     window.clearTimeout(timeoutRef);
   }
   run = false;
 });
 
-d3.select('#loadOndemand').on('click', function() {
+d3.select('#loadOndemand').on('click', () => {
   console.log('lazy load modules');
-  require.ensure([], function(require) {
-    var s = require('./load-on-demand');
+  require.ensure([], (require) => {
+    const s = require('./load-on-demand');
     console.log(s);
   });
 });

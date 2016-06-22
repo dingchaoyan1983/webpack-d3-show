@@ -26,6 +26,11 @@ module.exports = {
         }
       },
       {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
@@ -54,5 +59,8 @@ module.exports = {
     new ExtractTextPlugin('[name].[contenthash].css', {
       allChunks: true
     })
-  ]
+  ],
+  eslint: {
+    configFile: './.eslintrc'
+  }
 };

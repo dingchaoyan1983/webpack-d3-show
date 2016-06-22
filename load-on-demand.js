@@ -1,1 +1,1 @@
-export default "I am a lazy load";
+export default 'I am a lazy load';
