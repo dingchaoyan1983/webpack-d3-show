@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 require('./index.css');
 
-let width  = 500;
+let width = '100%';
 let height = 500;
 let data = d3.range(10).map(function() {
   return generateRandom();
@@ -68,7 +68,10 @@ d3.select('#splice').on('click', function() {
   reDrawRect();
 });
 
+let run = false;
+
 function draw() {
+  run = true;
   data.push(generateRandom());
   data.shift();
   outputData();
@@ -79,10 +82,10 @@ function draw() {
 draw();
 
 d3.select('#auto').on('click', function() {
-    timeoutRef = window.setTimeout(draw, 500);
+  if (!run) {
+    draw();
+  }
 });
-
-console.log(d3.timer);
 
 d3.select('#stop').on('click', function() {
   console.log(this);
@@ -91,4 +94,13 @@ d3.select('#stop').on('click', function() {
   if (!!timeoutRef) {
     window.clearTimeout(timeoutRef);
   }
+  run = false;
+});
+
+d3.select('#loadOndemand').on('click', function() {
+  console.log('lazy load modules');
+  require.ensure([], function(require) {
+    var s = require('./load-on-demand');
+    console.log(s);
+  });
 });
