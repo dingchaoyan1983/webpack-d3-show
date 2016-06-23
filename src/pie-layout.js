@@ -1,12 +1,14 @@
 import * as d3 from 'd3';
-import { generateOneDimensionRandom } from './utils';
+import {
+  generateOneDimensionRandom
+} from './utils';
 
 const data = generateOneDimensionRandom(6);
 const pieLayout = d3.pie();
 
 const width = 400;
 const height = 400;
-const outerRadius = 150; // 外半径
+const outerRadius = 150;
 const innerRadius = 50;
 
 const canvas = d3.select('body').append('svg')

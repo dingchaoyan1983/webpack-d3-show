@@ -1,12 +1,15 @@
 import * as d3 from 'd3';
-import { generateRandom as _generateRandom, generateOneDimensionRandom } from './utils';
+import {
+  generateRandom as _generateRandom,
+  generateOneDimensionRandom
+} from './utils';
 
-const INTERVAL = 10000;
-const width = '100%';
-const height = 500;
+const INTERVAL = 500;
+const width = 400;
+const height = 400;
 const generateRandom = _generateRandom.bind(this, height);
-const data = generateOneDimensionRandom(30, height);
-const rectWidth = 30;
+const data = generateOneDimensionRandom(10, height);
+const rectWidth = 25;
 const margin = 10;
 const svg = d3.select('body').append('svg')
               .attr('width', width)
@@ -79,10 +82,7 @@ d3.select('#auto').on('click', () => {
   }
 });
 
-d3.select('#stop').on('click', (...rest) => {
-  console.log(this);
-  console.log(rest);
-  console.log(d3.event);
+d3.select('#stop').on('click', () => {
   if (!!timeoutRef) {
     window.clearTimeout(timeoutRef);
   }
@@ -90,9 +90,7 @@ d3.select('#stop').on('click', (...rest) => {
 });
 
 d3.select('#loadOndemand').on('click', () => {
-  console.log('lazy load modules');
   require.ensure([], (require) => {
-    const s = require('./load-on-demand');
-    console.log(s);
+    require('./load-on-demand');
   });
 });
