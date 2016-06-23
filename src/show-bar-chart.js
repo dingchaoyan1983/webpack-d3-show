@@ -4,12 +4,12 @@ import {
   generateOneDimensionRandom
 } from './utils';
 
-const INTERVAL = 500;
+const INTERVAL = 1000;
 const width = 400;
 const height = 400;
 const generateRandom = _generateRandom.bind(this, height);
 const data = generateOneDimensionRandom(10, height);
-const rectWidth = 25;
+const rectWidth = 30;
 const margin = 10;
 const svg = d3.select('body').append('svg')
               .attr('width', width)
@@ -18,22 +18,39 @@ let timeoutRef;
 const output = d3.select('#data');
 
 function drawRect() {
-  const elements = svg.selectAll('.rect')
-    .data(data);
+  const elements = svg.selectAll('.rect').data(data);
   const enter = elements.enter();
   const exit = elements.exit();
   // update
-  elements
+  elements.select('rect')
     .transition()
     .attr('height', (d) => d);
+
+  elements.select('text')
+    .transition()
+    .attr('transform', (d) => `translate(${rectWidth / 2}, ${d})`)
+    .text((d) => d);
+
   // enter
-  enter.append('rect')
+  const rectGroup = enter.append('g')
     .attr('class', 'rect')
-    .attr('x', (d, i) => (rectWidth + margin) * i)
+    .attr('transform', (d, i) => `translate(${(rectWidth + margin) * i}, 0)`);
+
+  rectGroup.append('rect')
     .attr('width', rectWidth)
     .attr('height', 0)
     .transition()
     .attr('height', (d) => d);
+
+  rectGroup.append('text')
+    .attr('fill', '#d62728')
+    .attr('width', rectWidth + margin)
+    .attr('text-anchor', 'middle')
+    .attr('transform', 'translate(0, 0)')
+    .transition()
+    .attr('transform', (d) => `translate(${rectWidth / 2}, ${d})`)
+    .text((d) => d);
+
   // exit
   exit.remove();
 }
