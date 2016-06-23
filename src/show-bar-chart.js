@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import { generateRandom as _generateRandom, generateOneDimensionRandom } from './utils';
 
+const INTERVAL = 10000;
 const width = '100%';
 const height = 500;
 const generateRandom = _generateRandom.bind(this, height);
@@ -67,7 +68,7 @@ function draw() {
   data.shift();
   outputData();
   reDrawRect();
-  timeoutRef = window.setTimeout(draw, 500);
+  timeoutRef = window.setTimeout(draw, INTERVAL);
 }
 
 draw();
