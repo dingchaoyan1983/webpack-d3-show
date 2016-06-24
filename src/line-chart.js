@@ -30,14 +30,22 @@ canvas.append('g')
 const pointsContainer = canvas.append('g')
                                 .attr('transform', `translate(${padding}, 0)`);
 
-pointsContainer.selectAll('circle')
+const pointGroup = pointsContainer.selectAll('g')
                 .data(data)
                 .enter()
-                .append('circle')
-                .attr('class', 'point')
-                .attr('cx', (d) => xScale(d.x))
-                .attr('cy', (d) => yScale(d.y))
-                .attr('r', '4');
+                .append('g');
+
+pointGroup.append('circle')
+  .attr('class', 'point')
+  .attr('cx', (d) => xScale(d.x))
+  .attr('cy', (d) => yScale(d.y))
+  .attr('r', '4');
+
+pointGroup.append('text')
+  .attr('x', (d) => xScale(d.x))
+  .attr('y', (d) => yScale(d.y) - 8)
+  .attr('text-anchor', 'middle')
+  .text((d) => d.y);
 
 const lineContainer = canvas.append('g')
                         .attr('transform', `translate(${padding}, 0)`);

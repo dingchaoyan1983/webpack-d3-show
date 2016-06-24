@@ -1,5 +1,3 @@
-import * as d3 from 'd3';
-
 function generateRandom(width = 500) {
   return Math.floor(Math.random() * width);
 }
@@ -15,8 +13,16 @@ function generateOneDimensionRandom(count = 10, width = 500) {
 }
 
 function generatePointsRandom(count = 10, width = 500, height = 500) {
-  const arr = d3.range(0, width, Math.floor(width / count));
-  return arr.map((x) => ({ x, y: generateRandom(height) }));
+  const arr = [];
+
+  for (let i = 0; i < count; i++) {
+    arr.push({
+      x: generateRandom(width),
+      y: generateRandom(height)
+    });
+  }
+
+  return arr;
 }
 
 export {
