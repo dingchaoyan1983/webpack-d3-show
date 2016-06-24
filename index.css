@@ -8,3 +8,21 @@ body {
 .rect {
   fill: #45beff;
 }
+
+path.line {
+  fill: none;
+  stroke: #45beff;
+}
+
+.domain {
+  stroke: #45beff;
+}
+.axis line {
+  stroke: #45beff;
+}
+
+.point {
+    fill: none;
+    stroke: #9467bd;
+    stroke-width: 3;
+}
