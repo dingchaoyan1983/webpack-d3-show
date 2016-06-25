@@ -1,13 +1,13 @@
 import * as d3 from 'd3';
 import {
-  generateRandom as _generateRandom,
+  random,
   generateOneDimensionRandom
 } from './utils';
 
 const INTERVAL = 1000;
 const width = 400;
 const height = 400;
-const generateRandom = _generateRandom.bind(this, height);
+const generateRandom = random.bind(this, height);
 const data = generateOneDimensionRandom(10, height);
 const rectWidth = 30;
 const margin = 10;

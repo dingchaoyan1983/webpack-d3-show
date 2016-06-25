@@ -1,4 +1,4 @@
-function generateRandom(width = 500) {
+function random(width = 500) {
   return Math.floor(Math.random() * width);
 }
 
@@ -6,19 +6,19 @@ function generateOneDimensionRandom(count = 10, width = 500) {
   const arr = [];
 
   for (let i = 0; i < count; i++) {
-    arr.push(generateRandom(width));
+    arr.push(random(width));
   }
 
   return arr;
 }
 
-function generatePointsRandom(count = 10, width = 500, height = 500) {
+function generateRandomPoints(count = 10, width = 500, height = 500) {
   const arr = [];
 
   for (let i = 0; i < count; i++) {
     arr.push({
-      x: generateRandom(width),
-      y: generateRandom(height)
+      x: random(width),
+      y: random(height)
     });
   }
 
@@ -26,7 +26,7 @@ function generatePointsRandom(count = 10, width = 500, height = 500) {
 }
 
 export {
-  generateRandom,
+  random,
   generateOneDimensionRandom,
-  generatePointsRandom
+  generateRandomPoints
 };
