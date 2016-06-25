@@ -1,3 +1,5 @@
+import { range } from 'd3';
+
 function random(width = 500) {
   return Math.floor(Math.random() * width);
 }
@@ -25,8 +27,14 @@ function generateRandomPoints(count = 10, width = 500, height = 500) {
   return arr;
 }
 
+
+function generateContinuesPoints(count = 10, width = 500, height = 500) {
+  return range(0, width, parseInt(width / count, 10)).map((x) => ({ x, y: random(height) }));
+}
+
 export {
   random,
   generateRandomArray,
-  generateRandomPoints
+  generateRandomPoints,
+  generateContinuesPoints
 };
