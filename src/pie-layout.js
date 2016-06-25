@@ -1,9 +1,9 @@
 import * as d3 from 'd3';
 import {
-  generateOneDimensionRandom
+  generateRandomArray
 } from './utils';
 
-const data = generateOneDimensionRandom(6);
+const data = generateRandomArray(6);
 const pieLayout = d3.pie();
 
 const width = 400;

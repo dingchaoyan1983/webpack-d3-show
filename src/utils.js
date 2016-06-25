@@ -2,7 +2,7 @@ function random(width = 500) {
   return Math.floor(Math.random() * width);
 }
 
-function generateOneDimensionRandom(count = 10, width = 500) {
+function generateRandomArray(count = 10, width = 500) {
   const arr = [];
 
   for (let i = 0; i < count; i++) {
@@ -27,6 +27,6 @@ function generateRandomPoints(count = 10, width = 500, height = 500) {
 
 export {
   random,
-  generateOneDimensionRandom,
+  generateRandomArray,
   generateRandomPoints
 };

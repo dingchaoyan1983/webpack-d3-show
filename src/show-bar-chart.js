@@ -1,14 +1,14 @@
 import * as d3 from 'd3';
 import {
   random,
-  generateOneDimensionRandom
+  generateRandomArray
 } from './utils';
 
 const INTERVAL = 1000;
 const width = 400;
 const height = 400;
 const generateRandom = random.bind(this, height);
-const data = generateOneDimensionRandom(10, height);
+const data = generateRandomArray(10, height);
 const rectWidth = 30;
 const margin = 10;
 const svg = d3.select('body').append('svg')
