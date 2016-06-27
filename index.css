@@ -26,3 +26,7 @@ path.line {
     stroke: #9467bd;
     stroke-width: 3;
 }
+
+.area {
+  fill: #ff7f0e;
+}
