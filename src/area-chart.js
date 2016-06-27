@@ -2,7 +2,7 @@ import { generateContinuesPoints } from './utils';
 import * as d3 from 'd3';
 
 const data = generateContinuesPoints(10, 10000, 10000);
-const width = 600;
+const width = 500;
 const height = 400;
 const padding = 50;
 const buffer = 1000;
