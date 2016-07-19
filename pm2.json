@@ -1,0 +1,4 @@
+{
+  "name": "d3-show",
+  "script": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+}
